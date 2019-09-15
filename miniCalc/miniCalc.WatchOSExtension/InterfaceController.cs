@@ -22,12 +22,12 @@ namespace miniCalc.WatchOSExtension
             Console.WriteLine("{0} awake with context", this);
         }
 
-        public UIColor NumberButtonNormalColor = UIColor.Purple;
-        public UIColor NumberButtonPressedColor = UIColor.LightGray;
-        public UIColor OperationButtonNormalColor = UIColor.Green;
-        public UIColor OperationButtonPressedColor = UIColor.Yellow;
-        public UIColor ActionButtonNormalColor = UIColor.DarkGray;
-        public UIColor ActionButtonPressedColor = UIColor.LightGray;
+        public UIColor NumberButtonNormalColor = new UIColor(red: 0.65f, green: 0.13f, blue: 1.00f, alpha: 1.0f);
+        public UIColor OperationButtonNormalColor = new UIColor(red: 0.50f, green: 1.00f, blue: 0.17f, alpha: 1.0f);
+        public UIColor ActionButtonNormalColor = new UIColor(red:0.28f, green:0.01f, blue:1.00f, alpha:1.0f);
+        public UIColor NumberButtonPressedColor = new UIColor(red: 0.65f, green: 0.13f, blue: 1.00f, alpha: 0.9f);
+        public UIColor OperationButtonPressedColor = new UIColor(red: 0.50f, green: 1.00f, blue: 0.17f, alpha: 0.9f);
+        public UIColor ActionButtonPressedColor = new UIColor(red: 0.28f, green: 0.01f, blue: 1.00f, alpha: 0.9f);
 
         public override void WillActivate() 
         {
@@ -92,7 +92,8 @@ namespace miniCalc.WatchOSExtension
         {
             WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.Click);
 
-            calculator.Operand1 = Convert.ToDouble(calculator.ScreenText);
+            if (calculator.ScreenText !="") { calculator.Operand1 = Convert.ToDouble(calculator.ScreenText); }
+            
             calculator.Operation = button.Operation;
             calculator.SaveResults();
             calculator.ScreenText = $@"";
@@ -100,15 +101,21 @@ namespace miniCalc.WatchOSExtension
             lblResult.SetText(calculator.ScreenResult);
 
             ResetButtonColors(nbuttoncollection, NumberButtonNormalColor);
+            ResetButtonColors(obuttoncollection, OperationButtonNormalColor);
             ResetButtonColors(abuttoncollection, ActionButtonNormalColor);
             button.Button.SetBackgroundColor(button.PressedColor);
         }
 
-        // --------------------------------------------------------------------- action button press (C, =)
+        // --------------------------------------------------------------------- action button press (C, +/-, %, =)
         private void OnButtonPress(ActionButton button)
         {
             switch (button.Action)
             {
+                case Action.Clear:
+                    calculator.ClearScreen();
+                    break;
+                case Action.PluMinus:
+                    break;
                 case Action.Equals:
                     WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.DirectionUp);
 
@@ -119,9 +126,6 @@ namespace miniCalc.WatchOSExtension
                     calculator.SaveResults($@"[{calculator.Operation}] ----------------");
                     calculator.SaveResults();
                     calculator.SaveResults($@"[Total] ----------------");
-                    break;
-                case Action.Clear:
-                    calculator.ClearScreen();
                     break;
             }
 
@@ -138,119 +142,108 @@ namespace miniCalc.WatchOSExtension
 
         partial void OnButtonPressZero()
         {
-            Console.WriteLine("{0} button press zero", this);
             NumberButton button = new NumberButton { Symbol = "0", Button = btnZero };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressOne()
         {
-            Console.WriteLine("{0} button press one", this);
             NumberButton button = new NumberButton { Symbol = "1", Button = btnOne };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressTwo()
         {
-            Console.WriteLine("{0} button press two", this);
             NumberButton button = new NumberButton { Symbol = "2", Button = btnTwo };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressThree()
         {
-            Console.WriteLine("{0} button press three", this);
             NumberButton button = new NumberButton { Symbol = "3", Button = btnThree };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressFour()
         {
-            Console.WriteLine("{0} button press four", this);
             NumberButton button = new NumberButton { Symbol = "4", Button = btnFour };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressFive()
         {
-            Console.WriteLine("{0} button press five", this);
             NumberButton button = new NumberButton { Symbol = "5", Button = btnFive };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressSix()
         {
-            Console.WriteLine("{0} button press six", this);
             NumberButton button = new NumberButton { Symbol = "6", Button = btnSix };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressSeven()
         {
-            Console.WriteLine("{0} button press seven", this);
             NumberButton button = new NumberButton { Symbol = "7", Button = btnSeven };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressEight()
         {
-            Console.WriteLine("{0} button press eight", this);
             NumberButton button = new NumberButton { Symbol = "8", Button = btnEight };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressNine()
         {
-            Console.WriteLine("{0} button press nine", this);
             NumberButton button = new NumberButton { Symbol = "9", Button = btnNine };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressPeriod()
         {
-            Console.WriteLine("{0} button press period", this);
             NumberButton button = new NumberButton{ Symbol = ".", Button = btnPeriod };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressAdd()
         {
-            Console.WriteLine("{0} button press add", this);
             OperationButton button = new OperationButton { Operation = Operation.Add, Button = btnAdd };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressSubtract()
         {
-            Console.WriteLine("{0} button press subtract", this);
             OperationButton button = new OperationButton { Operation = Operation.Subtract, Button = btnSubtract };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressMultiply()
         {
-            Console.WriteLine("{0} button press multiply", this);
             OperationButton button = new OperationButton { Operation = Operation.Multiply, Button = btnMultiply };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressDivide()
         {
-            Console.WriteLine("{0} button press divide", this);
             OperationButton button = new OperationButton { Operation = Operation.Divide, Button = btnDivide };
+            OnButtonPress(button);
+        }
+
+        partial void OnButtonPressPercent()
+        {
+            OperationButton button = new OperationButton { Operation = Operation.Percent, Button = btnPercent };
             OnButtonPress(button);
         }
 
         partial void onButtonPressSum()
         {
-            Console.WriteLine("{0} button press sum", this);
             ActionButton button = new ActionButton { Action = Action.Equals,  Button = btnSum };
             OnButtonPress(button);
         }
 
         partial void OnButtonPressClear()
         {
-            Console.WriteLine("{0} button press clear", this);
             ActionButton button = new ActionButton { Action = Action.Clear, Button = btnClear };
             OnButtonPress(button);
         }
@@ -259,12 +252,12 @@ namespace miniCalc.WatchOSExtension
 
         public enum Operation 
         {
-            None = 0, Add = 1, Subtract = 2, Multiply = 3, Divide = 4,
+            None = 0, Add = 1, Subtract = 2, Multiply = 3, Divide = 4, Percent = 5
         }
 
         public enum Action 
         {
-            None = 0, Percent = 1, PluMinus = 2, Clear = 3, Equals = 4,
+            None = 0, PluMinus = 2, Clear = 3, Equals = 4,
         }
 
         public class BaseCalculatorButton 
@@ -356,6 +349,9 @@ namespace miniCalc.WatchOSExtension
             {
                 switch (Operation)
                 {
+                    case Operation.Percent:
+                        Total = Operand1 / 100; ;
+                        break;
                     case Operation.Add:
                         Total = Operand1 + Operand2;
                         break;

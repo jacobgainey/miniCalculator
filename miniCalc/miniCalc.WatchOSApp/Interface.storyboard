@@ -27,7 +27,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <items>
                                 <button width="33" alignment="left" title="C" id="717" height="25" accessibilityValue="0">
-                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <color key="backgroundColor" colorSpace="calibratedRGB" red="0.27843137254901962" green="0.011764705882352941" blue="0.996078431372549" alpha="0.84705882352941175"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <action selector="OnButtonPressZero" destination="719" id="718"/>
@@ -46,11 +46,13 @@
                                 <button width="33" alignment="left" title="%" id="722" height="25">
                                     <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <connections/>
+                                    <connections>
+                                        <action selector="OnButtonPressPercent" destination="AgC-eL-Hgc" id="6162"/>
+                                    </connections>
                                     <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
                                 </button>
                                 <button width="33" alignment="left" title="/" id="248" height="25">
-                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.4966713608" green="1" blue="0.1707798861" alpha="0.8470588235"/>
+                                    <color key="backgroundColor" colorSpace="calibratedRGB" red="0.49803921568627452" green="1" blue="0.17254901960784313" alpha="0.84313725490196079"/>
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
