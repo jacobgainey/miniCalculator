@@ -27,19 +27,19 @@ namespace miniCalc.WatchOSExtension
             // This method is called when the watch view controller is about to be visible to the user.
             Console.WriteLine("{0} will activate", this);
 
-            obuttoncollection = new List<WKInterfaceButton>
-            {
-                 btnZero, btnOne, btnTwo, btnThree, btnThree, btnFour,
-                 btnFive, btnSix, btnSeven, btnEight, btnNine
-            };
-            obuttoncollection = new List<WKInterfaceButton>
-            {
-                 btnAdd, btnSubtract, btnDivide, btnMultiply,
-            };
-            abuttoncollection = new List<WKInterfaceButton>
-            {
-                 btnClear, btnPercent, btnPlusMinus, btnSum
-            };
+            //obuttoncollection = new List<WKInterfaceButton>
+            //{
+            //     btnZero, btnOne, btnTwo, btnThree, btnThree, btnFour,
+            //     btnFive, btnSix, btnSeven, btnEight, btnNine
+            //};
+            //obuttoncollection = new List<WKInterfaceButton>
+            //{
+            //     btnAdd, btnSubtract, btnDivide, btnMultiply,
+            //};
+            //abuttoncollection = new List<WKInterfaceButton>
+            //{
+            //     btnClear, btnPercent, btnPlusMinus, btnSum
+            //};
         }
 
         public override void DidDeactivate()
@@ -52,9 +52,9 @@ namespace miniCalc.WatchOSExtension
 
         public Calculationbject calculator = new Calculationbject();
 
-        public List<WKInterfaceButton> nbuttoncollection;
-        public List<WKInterfaceButton> obuttoncollection;
-        public List<WKInterfaceButton> abuttoncollection;
+        //public List<WKInterfaceButton> nbuttoncollection;
+        //public List<WKInterfaceButton> obuttoncollection;
+        //public List<WKInterfaceButton> abuttoncollection;
 
         //public void ResetButtonColors()
         //{
@@ -93,12 +93,14 @@ namespace miniCalc.WatchOSExtension
             switch (button.Action)
             {
                 case Action.Equals:
+                    WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.DirectionUp);
                     calculator.Operand2 = calculator.ScreenNumber;
                     calculator.Calculate();
                     calculator.Operand1 = calculator.Total;
                     lblScreen.SetText($@"{calculator.Total}");
                     break;
                 case Action.Clear:
+                    WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.DirectionDown);
                     calculator.Reset();
                     lblScreen.SetText(calculator.SetScreen($@"0"));
                     //ResetButtonColors(nbuttoncollection, button);
