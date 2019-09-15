@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" fullScreen="YES" spacing="1" title="miniCalc" identifier="InterfaceController">
+                    <items>
+                        <group key="rootItem" alignment="left" id="259" width="1" radius="5">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <label alignment="center" text="1234567890" id="44" textAlignment="right" height="20" width="1">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0.333333333333333" alpha="1"/>
+                        </group>
+                        <group key="rootItem" width="134" alignment="left" id="716" height="25" spacing="1">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <button width="33" alignment="left" title="C" id="717" height="24" accessibilityValue="0">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressZero" destination="719" id="718"/>
+                                        <action selector="OnButtonPressClear" destination="AgC-eL-Hgc" id="978"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" id="720" height="25" title="+/-">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressPeriod" destination="719" id="721"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="13" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="%" id="722" height="25">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections/>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="/" id="248" height="25">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.4966713608" green="1" blue="0.1707798861" alpha="0.8470588235"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressDivide" destination="AgC-eL-Hgc" id="635"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group key="rootItem" width="134" alignment="left" id="244" height="25" spacing="1">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <button width="33" alignment="left" title="7" id="245" height="25">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressSeven" destination="AgC-eL-Hgc" id="629"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="8" id="246" height="25">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressEight" destination="AgC-eL-Hgc" id="630"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="9" id="247" height="25">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressNine" destination="AgC-eL-Hgc" id="631"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="X" id="106" height="25">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.4966713608" green="1" blue="0.1707798861" alpha="0.8470588235"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <connections>
+                                        <action selector="OnButtonPressMultiply" destination="AgC-eL-Hgc" id="634"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group key="rootItem" width="134" alignment="left" id="100" height="25" spacing="1">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <button width="33" alignment="left" title="4" id="99" height="25">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <connections>
+                                        <action selector="OnButtonPressFour" destination="AgC-eL-Hgc" id="626"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="5" id="104" height="25">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <connections>
+                                        <action selector="OnButtonPressFive" destination="AgC-eL-Hgc" id="627"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="6" id="105" height="25">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <connections>
+                                        <action selector="OnButtonPressSix" destination="AgC-eL-Hgc" id="628"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="-" id="258" height="25">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.4966713608" green="1" blue="0.1707798861" alpha="0.8470588235"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <connections>
+                                        <action selector="OnButtonPressSubtract" destination="AgC-eL-Hgc" id="633"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="27"/>
+                                </button>
+                            </items>
+                        </group>
+                        <group key="rootItem" width="134" alignment="left" id="254" height="25" spacing="1">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <button width="33" alignment="left" title="1" id="255" height="25">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <connections>
+                                        <action selector="OnButtonPressOne" destination="AgC-eL-Hgc" id="571"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="2" id="256" height="25">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <connections>
+                                        <action selector="OnButtonPressTwo" destination="AgC-eL-Hgc" id="576"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="3" id="257" height="25">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <connections>
+                                        <action selector="OnButtonPressThree" destination="AgC-eL-Hgc" id="577"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="+" id="253" height="25">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.498039215686275" green="1" blue="0.1707798861" alpha="0.8470588235"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressAdd" destination="AgC-eL-Hgc" id="632"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="20"/>
+                                </button>
+                            </items>
+                        </group>
+                        <group key="rootItem" width="134" alignment="left" id="249" height="25" spacing="1">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <button width="33" alignment="left" title="0" id="250" height="25" accessibilityValue="0">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressZero" destination="AgC-eL-Hgc" id="434"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="33" alignment="left" title="." id="251" height="25">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressPeriod" destination="AgC-eL-Hgc" id="636"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
+                                </button>
+                                <button width="66" alignment="left" id="723" height="25" title="=">
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.4966713608" green="1" blue="0.1707798861" alpha="0.8470588235"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="OnButtonPressAdd" destination="719" id="724"/>
+                                        <action selector="onButtonPressSum" destination="AgC-eL-Hgc" id="809"/>
+                                    </connections>
+                                    <fontDescription key="font" type="system" pointSize="25"/>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="lblScreen" destination="44" id="name-outlet-44"/>
+                        <outlet property="btnZero" destination="250" id="name-outlet-250"/>
+                        <outlet property="btnOne" destination="255" id="name-outlet-255"/>
+                        <outlet property="btnFour" destination="99" id="name-outlet-99"/>
+                        <outlet property="btnFive" destination="104" id="name-outlet-104"/>
+                        <outlet property="btnSeven" destination="245" id="name-outlet-245"/>
+                        <outlet property="btnEight" destination="246" id="name-outlet-246"/>
+                        <outlet property="btnNine" destination="247" id="name-outlet-247"/>
+                        <outlet property="btnPeriod" destination="251" id="name-outlet-251"/>
+                        <outlet property="btnThree" destination="257" id="name-outlet-257"/>
+                        <outlet property="btnTwo" destination="256" id="name-outlet-256"/>
+                        <outlet property="btnSix" destination="105" id="name-outlet-105"/>
+                        <outlet property="btnClear" destination="717" id="name-outlet-717"/>
+                        <outlet property="btnPlusMinus" destination="720" id="name-outlet-720"/>
+                        <outlet property="btnPercent" destination="722" id="name-outlet-722"/>
+                        <outlet property="btnAdd" destination="253" id="name-outlet-253"/>
+                        <outlet property="btnSubtract" destination="258" id="name-outlet-258"/>
+                        <outlet property="btnMultiply" destination="106" id="name-outlet-106"/>
+                        <outlet property="btnDivide" destination="248" id="name-outlet-248"/>
+                        <outlet property="btnSum" destination="723" id="name-outlet-723"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-49" y="-1"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="XkS-y5-khE"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" id="JfB-70-Muf">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                    </notificationCategory>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="XkS-y5-khE" id="49B-RR-99y"/>
+                        <segue destination="gdX-wl-uQE" kind="relationship" relationship="dynamicNotificationInterface" id="fKh-qV-3T2"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="114" y="0.0"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="KIl-fV-djm">
+            <objects>
+                <controller id="gdX-wl-uQE" customClass="NotificationController"/>
+            </objects>
+            <point key="canvasLocation" x="376" y="-177"/>
+        </scene>
+    </scenes>
+</document>
