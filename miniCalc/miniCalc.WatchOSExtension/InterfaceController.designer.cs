@@ -91,6 +91,10 @@ namespace miniCalc.WatchOSExtension
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        WatchKit.WKInterfaceLabel lblResult { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         WatchKit.WKInterfaceLabel lblScreen { get; set; }
 
         [Action ("OnButtonPressAdd")]
@@ -256,6 +260,11 @@ namespace miniCalc.WatchOSExtension
             if (btnZero != null) {
                 btnZero.Dispose ();
                 btnZero = null;
+            }
+
+            if (lblResult != null) {
+                lblResult.Dispose ();
+                lblResult = null;
             }
 
             if (lblScreen != null) {

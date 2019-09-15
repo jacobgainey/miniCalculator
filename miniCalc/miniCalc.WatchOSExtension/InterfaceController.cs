@@ -14,7 +14,7 @@ namespace miniCalc.WatchOSExtension
             // Note: this .ctor should not contain any initialization logic.
         }
 
-        public override void Awake(NSObject context)
+        public override void Awake(NSObject context) 
         {
             base.Awake(context);
 
@@ -22,27 +22,38 @@ namespace miniCalc.WatchOSExtension
             Console.WriteLine("{0} awake with context", this);
         }
 
-        public override void WillActivate()
+        public UIColor NumberButtonNormalColor = UIColor.Purple;
+        public UIColor NumberButtonPressedColor = UIColor.LightGray;
+        public UIColor OperationButtonNormalColor = UIColor.Green;
+        public UIColor OperationButtonPressedColor = UIColor.Yellow;
+        public UIColor ActionButtonNormalColor = UIColor.DarkGray;
+        public UIColor ActionButtonPressedColor = UIColor.LightGray;
+
+        public override void WillActivate() 
         {
             // This method is called when the watch view controller is about to be visible to the user.
             Console.WriteLine("{0} will activate", this);
 
-            //obuttoncollection = new List<WKInterfaceButton>
-            //{
-            //     btnZero, btnOne, btnTwo, btnThree, btnThree, btnFour,
-            //     btnFive, btnSix, btnSeven, btnEight, btnNine
-            //};
-            //obuttoncollection = new List<WKInterfaceButton>
-            //{
-            //     btnAdd, btnSubtract, btnDivide, btnMultiply,
-            //};
-            //abuttoncollection = new List<WKInterfaceButton>
-            //{
-            //     btnClear, btnPercent, btnPlusMinus, btnSum
-            //};
+            nbuttoncollection = new List<WKInterfaceButton>
+            {
+                 btnZero, btnOne, btnTwo, btnThree, btnThree, btnFour,
+                 btnFive, btnSix, btnSeven, btnEight, btnNine, btnPeriod
+            };
+            obuttoncollection = new List<WKInterfaceButton>
+            {
+                 btnAdd, btnSubtract, btnDivide, btnMultiply
+            };
+            abuttoncollection = new List<WKInterfaceButton>
+            {
+                 btnClear, btnPercent, btnPlusMinus, btnSum
+            };
+
+            ResetButtonColors(nbuttoncollection, NumberButtonNormalColor);
+            ResetButtonColors(obuttoncollection, OperationButtonNormalColor);
+            ResetButtonColors(abuttoncollection, ActionButtonNormalColor);
         }
 
-        public override void DidDeactivate()
+        public override void DidDeactivate() 
         {
             // This method is called when the watch view controller is no longer visible to the user.
             Console.WriteLine("{0} did deactivate", this);
@@ -50,29 +61,30 @@ namespace miniCalc.WatchOSExtension
 
         // --------------------------------------------------------------------- start
 
-        public Calculationbject calculator = new Calculationbject();
+        public CalculationObject calculator = new CalculationObject();
+        public List<WKInterfaceButton> nbuttoncollection;
+        public List<WKInterfaceButton> obuttoncollection;
+        public List<WKInterfaceButton> abuttoncollection;
 
-        //public List<WKInterfaceButton> nbuttoncollection;
-        //public List<WKInterfaceButton> obuttoncollection;
-        //public List<WKInterfaceButton> abuttoncollection;
-
-        //public void ResetButtonColors()
-        //{
-        //    foreach (var b in buttons)
-        //    {
-        //        b.SetBackgroundColor(button.NormalColor);
-        //    }
-        //}
+        public void ResetButtonColors(List<WKInterfaceButton> buttons, UIColor color)
+        {
+            foreach (var b in buttons)
+            {
+                b.SetBackgroundColor(color);
+            }
+        }
 
         // --------------------------------------------------------------------- number button press (0 - 9, .)
         private void OnButtonPress(NumberButton button)
         {
             WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.Click);
 
-            lblScreen.SetText(calculator.SetScreen(button.Symbol));
+            calculator.ProcessScreenText(button.Symbol);
+            lblScreen.SetText(calculator.ScreenText);
 
-            //ResetButtonColors(nbuttoncollection, button);
-            //button.Button.SetBackgroundColor(button.PressedColor);
+            ResetButtonColors(nbuttoncollection, NumberButtonNormalColor);
+            ResetButtonColors(abuttoncollection, ActionButtonNormalColor);
+            button.Button.SetBackgroundColor(button.PressedColor);
         }
 
         // --------------------------------------------------------------------- operation button press (+, -, * , /)
@@ -80,39 +92,46 @@ namespace miniCalc.WatchOSExtension
         {
             WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.Click);
 
-            calculator.Operand1 = calculator.ScreenNumber;
+            calculator.Operand1 = Convert.ToDouble(calculator.ScreenText);
             calculator.Operation = button.Operation;
-            lblScreen.SetText(calculator.ClearScreen());
+            calculator.SaveResults();
+            calculator.ScreenText = $@"";
 
-            //ResetButtonColors(obuttoncollection, button);
-            //button.Button.SetBackgroundColor(button.PressedColor);
+            lblResult.SetText(calculator.ScreenResult);
+
+            ResetButtonColors(nbuttoncollection, NumberButtonNormalColor);
+            ResetButtonColors(abuttoncollection, ActionButtonNormalColor);
+            button.Button.SetBackgroundColor(button.PressedColor);
         }
 
         // --------------------------------------------------------------------- action button press (C, =)
         private void OnButtonPress(ActionButton button)
         {
-            WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.Click);
-
             switch (button.Action)
             {
                 case Action.Equals:
                     WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.DirectionUp);
-                    calculator.Operand2 = calculator.ScreenNumber;
+
+                    calculator.Operand2 = Convert.ToDouble(calculator.ScreenText);
+                    calculator.SaveResults();
                     calculator.Calculate();
                     calculator.Operand1 = calculator.Total;
-                    calculator.ScreenNumber = calculator.Total;
-                    lblScreen.SetText($@"{calculator.Total}");
+                    calculator.SaveResults($@"[{calculator.Operation}] ----------------");
+                    calculator.SaveResults();
+                    calculator.SaveResults($@"[Total] ----------------");
                     break;
                 case Action.Clear:
-                    calculator.Reset();
-                    lblScreen.SetText(calculator.SetScreen($@"0"));
-                    //ResetButtonColors(nbuttoncollection, button);
-                    //ResetButtonColors(obuttoncollection, button);
+                    calculator.ClearScreen();
                     break;
             }
 
-            //ResetButtonColors(abuttoncollection, button);
-            //button.Button.SetBackgroundColor(button.PressedColor);
+            lblScreen.SetText($@"{calculator.Total}");
+            lblResult.SetText($@"{calculator.ScreenResult}");
+
+            ResetButtonColors(nbuttoncollection, NumberButtonNormalColor);
+            ResetButtonColors(obuttoncollection, OperationButtonNormalColor);
+            ResetButtonColors(abuttoncollection, ActionButtonNormalColor);
+            button.Button.SetBackgroundColor(button.PressedColor);
         }
 
         #region -------------------------------------------------------------- Button Events
@@ -238,86 +257,102 @@ namespace miniCalc.WatchOSExtension
 
         #endregion -------------------------------------------------------------- Button Events
 
-        public enum Operation
+        public enum Operation 
         {
             None = 0, Add = 1, Subtract = 2, Multiply = 3, Divide = 4,
         }
 
-        public enum Action
+        public enum Action 
         {
             None = 0, Percent = 1, PluMinus = 2, Clear = 3, Equals = 4,
         }
 
-        public class CalculatorButton
+        public class BaseCalculatorButton 
         {
             public UIColor NormalColor { get; set; }
             public UIColor PressedColor { get; set; }
             public WKInterfaceButton Button { get; set; }
         }
 
-        public class OperationButton : CalculatorButton
-        {
-            public Operation Operation { get; set; } = Operation.None;
-            public OperationButton()
-            {
-                NormalColor = UIColor.FromRGB(127, 255, 44);
-                PressedColor = UIColor.FromRGB(255, 255, 0);
-            }
-        }
-
-        public class ActionButton : CalculatorButton
-        {
-            public Action Action { get; set; } = Action.None;
-            public ActionButton()
-            {
-                NormalColor = UIColor.FromRGB(127, 255, 44);
-                PressedColor = UIColor.FromRGB(255, 255, 0);
-            }
-        }
-
-        public class NumberButton : CalculatorButton
+        public class NumberButton : BaseCalculatorButton
         {
             public string Symbol { get; set; } = null;
             public NumberButton()
             {
-                NormalColor = UIColor.FromRGB(165, 33, 255);
-                PressedColor = UIColor.FromRGB(212, 158, 255);
+                //NormalColor = UIColor.FromRGB(165, 33, 255);
+                //PressedColor = UIColor.FromRGB(212, 158, 255);
+                NormalColor = UIColor.Purple;
+                PressedColor = UIColor.LightGray;
+            
+            }
+
+        }
+
+        public class OperationButton : BaseCalculatorButton
+        {
+            public Operation Operation { get; set; } = Operation.None;
+            public OperationButton()
+            {
+                //NormalColor = UIColor.FromRGB(127, 255, 44);
+                //PressedColor = UIColor.FromRGB(255, 255, 0);
+                NormalColor = UIColor.Green;
+                PressedColor = UIColor.LightGray;
             }
         }
 
-        public class Calculationbject
+        public class ActionButton : BaseCalculatorButton
         {
+            public Action Action { get; set; } = Action.None;
+            public ActionButton()
+            {
+                //NormalColor = UIColor.FromRGB(127, 255, 44);
+                //PressedColor = UIColor.FromRGB(255, 255, 0);
+                NormalColor = UIColor.DarkGray;
+                PressedColor = UIColor.LightGray;
+            }
+        }
+
+        public class CalculationObject
+        {
+            public string ScreenResult { get; set; } = "*** Scratch Pad ***";
             public string ScreenText { get; set; } = "0";
-            public double ScreenNumber { get; set; } = 0;
             public double Total { get; set; } = 0;
             public double Operand1 { get; set; } = 0;
             public double Operand2 { get; set; } = 0;
             public Operation Operation { get; set; } = Operation.None;
 
-            public string SetScreen(string text)
+            public CalculationObject()
             {
-                ScreenText += text.TrimStart('0');
-                ScreenNumber = Convert.ToDouble(ScreenText);
-                return $@"{ScreenNumber}";
+                ClearScreen();
             }
 
-            public string ClearScreen()
+            public void ProcessScreenText(string text)
             {
-                ScreenText = "";
-                return ScreenText;
+                ScreenText += text;
+                ScreenText = ScreenText.TrimStart('0');
             }
 
-            public void Reset()
+            public void SaveResults()
             {
-                ScreenText = "0";
-                ScreenNumber = 0;
+                ScreenResult += ScreenText + '\n';
+            }
+
+            public void SaveResults(string text)
+            {
+                ScreenResult += text + '\n' ;
+            }
+
+            public void ClearScreen()
+            {
+                ScreenText = $@"0";
+                ScreenResult = "*** Scratch Pad ***" + '\n';
                 Total = 0;
                 Operand1 = 0;
                 Operand2 = 0;
                 Operation = Operation.None;
             }
 
-            public double Calculate()
+            public void Calculate()
             {
                 switch (Operation)
                 {
@@ -341,7 +376,7 @@ namespace miniCalc.WatchOSExtension
                         }
                         break;
                 }
-                return Total;
+                ScreenText = $@"{Total}";
             }
 
         }

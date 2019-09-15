@@ -63,7 +63,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <items>
                                 <button width="33" alignment="left" title="7" id="245" height="25">
-                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.647058823529412" green="0.129411764705882" blue="1" alpha="0.8470588235"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <action selector="OnButtonPressSeven" destination="AgC-eL-Hgc" id="629"/>
@@ -205,7 +205,7 @@
                         </group>
                         <group width="1" alignment="left" id="1631">
                             <items>
-                                <label alignment="left" text="Results" id="1632" textAlignment="right" width="1">
+                                <label alignment="left" text="Results" id="1632" textAlignment="right" width="1" numberOfLines="0">
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="font" type="system" pointSize="11"/>
                                 </label>
@@ -233,10 +233,11 @@
                         <outlet property="btnMultiply" destination="106" id="name-outlet-106"/>
                         <outlet property="btnDivide" destination="248" id="name-outlet-248"/>
                         <outlet property="btnSum" destination="723" id="name-outlet-723"/>
+                        <outlet property="lblResult" destination="1632" id="name-outlet-1632"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-69" y="-96"/>
+            <point key="canvasLocation" x="-257" y="-164"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -254,14 +255,14 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="49" y="135"/>
+            <point key="canvasLocation" x="-60" y="35"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="KIl-fV-djm">
             <objects>
                 <controller id="gdX-wl-uQE" customClass="NotificationController"/>
             </objects>
-            <point key="canvasLocation" x="258" y="-109"/>
+            <point key="canvasLocation" x="7" y="-224"/>
         </scene>
     </scenes>
 </document>
