@@ -17,7 +17,7 @@
                         <group key="rootItem" alignment="left" id="259" width="1" radius="5">
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <items>
-                                <label alignment="center" text="1234567890" id="44" textAlignment="right" height="20" width="1">
+                                <label alignment="center" id="44" textAlignment="right" height="20" width="1" text="0">
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </label>
                             </items>
@@ -26,7 +26,7 @@
                         <group key="rootItem" width="134" alignment="left" id="716" height="25" spacing="1">
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <items>
-                                <button width="33" alignment="left" title="C" id="717" height="24" accessibilityValue="0">
+                                <button width="33" alignment="left" title="C" id="717" height="25" accessibilityValue="0">
                                     <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
@@ -203,6 +203,14 @@
                                 </button>
                             </items>
                         </group>
+                        <group width="1" alignment="left" id="1631">
+                            <items>
+                                <label alignment="left" text="Results" id="1632" textAlignment="right" width="1">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="font" type="system" pointSize="11"/>
+                                </label>
+                            </items>
+                        </group>
                     </items>
                     <connections>
                         <outlet property="lblScreen" destination="44" id="name-outlet-44"/>
@@ -228,7 +236,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-49" y="-1"/>
+            <point key="canvasLocation" x="-69" y="-96"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -246,14 +254,14 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="114" y="0.0"/>
+            <point key="canvasLocation" x="49" y="135"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="KIl-fV-djm">
             <objects>
                 <controller id="gdX-wl-uQE" customClass="NotificationController"/>
             </objects>
-            <point key="canvasLocation" x="376" y="-177"/>
+            <point key="canvasLocation" x="258" y="-109"/>
         </scene>
     </scenes>
 </document>

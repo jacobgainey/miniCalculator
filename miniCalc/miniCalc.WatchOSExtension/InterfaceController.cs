@@ -64,6 +64,7 @@ namespace miniCalc.WatchOSExtension
         //    }
         //}
 
+        // --------------------------------------------------------------------- number button press (0 - 9, .)
         private void OnButtonPress(NumberButton button)
         {
             WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.Click);
@@ -74,6 +75,7 @@ namespace miniCalc.WatchOSExtension
             //button.Button.SetBackgroundColor(button.PressedColor);
         }
 
+        // --------------------------------------------------------------------- operation button press (+, -, * , /)
         private void OnButtonPress(OperationButton button)
         {
             WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.Click);
@@ -86,6 +88,7 @@ namespace miniCalc.WatchOSExtension
             //button.Button.SetBackgroundColor(button.PressedColor);
         }
 
+        // --------------------------------------------------------------------- action button press (C, =)
         private void OnButtonPress(ActionButton button)
         {
             WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.Click);
@@ -97,10 +100,10 @@ namespace miniCalc.WatchOSExtension
                     calculator.Operand2 = calculator.ScreenNumber;
                     calculator.Calculate();
                     calculator.Operand1 = calculator.Total;
+                    calculator.ScreenNumber = calculator.Total;
                     lblScreen.SetText($@"{calculator.Total}");
                     break;
                 case Action.Clear:
-                    WKInterfaceDevice.CurrentDevice.PlayHaptic(WKHapticType.DirectionDown);
                     calculator.Reset();
                     lblScreen.SetText(calculator.SetScreen($@"0"));
                     //ResetButtonColors(nbuttoncollection, button);
@@ -329,11 +332,18 @@ namespace miniCalc.WatchOSExtension
                         break;
                     case Operation.Divide:
                         if (Convert.ToInt32(Operand2) != 0)
+                        {
                             Total = this.Operand1 / this.Operand2;
+                        }
+                        else
+                        {
+                            // todo: return nan
+                        }
                         break;
                 }
                 return Total;
             }
+
         }
     }
 }
