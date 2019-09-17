@@ -141,6 +141,10 @@ namespace miniCalc.WatchOSExtension
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void OnButtonPressPeriod ();
 
+        [Action ("OnButtonPressPlusMinus")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void OnButtonPressPlusMinus ();
+
         [Action ("OnButtonPressSeven")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void OnButtonPressSeven ();

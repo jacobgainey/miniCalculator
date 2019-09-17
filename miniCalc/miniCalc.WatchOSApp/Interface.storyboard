@@ -36,10 +36,11 @@
                                     <fontDescription key="font" type="system" pointSize="15" weight="heavy"/>
                                 </button>
                                 <button width="33" alignment="left" id="720" height="25" title="+/-">
-                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.6485252411" green="0.1310398295" blue="1" alpha="0.8470588235"/>
+                                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.776470588235294" green="1" blue="0.207843137254902" alpha="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <action selector="OnButtonPressPeriod" destination="719" id="721"/>
+                                        <action selector="OnButtonPressPlusMinus" destination="AgC-eL-Hgc" id="6312"/>
                                     </connections>
                                     <fontDescription key="font" type="system" pointSize="13" weight="heavy"/>
                                 </button>
