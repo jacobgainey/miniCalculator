@@ -425,6 +425,7 @@ namespace miniCalc.WatchOSExtension
             {
                 UserText += text;
                 UserText = UserText.TrimStart('0');
+                if (UserText.StartsWith('.')) UserText = $@"0{UserText}";
             }
 
             //public void SaveResults()
@@ -497,7 +498,8 @@ namespace miniCalc.WatchOSExtension
                 }
             }
 
-            #endregion --------------------------------------------------------- Calculator Class 
+            #endregion --------------------------------------------------------- Calculator Class
+
         }
     }
 }
