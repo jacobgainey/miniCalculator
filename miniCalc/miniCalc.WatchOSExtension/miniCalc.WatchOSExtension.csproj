@@ -98,6 +98,8 @@
     <Compile Include="NotificationController.designer.cs">
       <DependentUpon>NotificationController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Calculator.cs" />
+    <Compile Include="ExtensionMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="PushNotificationPayload.json" />

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniCalc.WatchOSApp", "mini
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniCalc.WatchOSExtension", "miniCalc\miniCalc.WatchOSExtension\miniCalc.WatchOSExtension.csproj", "{07CD3F0A-F863-45D3-A3FE-D32D7D2B2E45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniCalc.test", "Test\miniCalc.test\miniCalc.test.csproj", "{2E2C0ACB-B67B-4090-8D63-F61C1E4A27ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -39,5 +41,13 @@ Global
 		{07CD3F0A-F863-45D3-A3FE-D32D7D2B2E45}.Debug|iPhone.Build.0 = Debug|iPhone
 		{07CD3F0A-F863-45D3-A3FE-D32D7D2B2E45}.Release|iPhone.ActiveCfg = Release|iPhone
 		{07CD3F0A-F863-45D3-A3FE-D32D7D2B2E45}.Release|iPhone.Build.0 = Release|iPhone
+		{2E2C0ACB-B67B-4090-8D63-F61C1E4A27ED}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{2E2C0ACB-B67B-4090-8D63-F61C1E4A27ED}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{2E2C0ACB-B67B-4090-8D63-F61C1E4A27ED}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{2E2C0ACB-B67B-4090-8D63-F61C1E4A27ED}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{2E2C0ACB-B67B-4090-8D63-F61C1E4A27ED}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{2E2C0ACB-B67B-4090-8D63-F61C1E4A27ED}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{2E2C0ACB-B67B-4090-8D63-F61C1E4A27ED}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{2E2C0ACB-B67B-4090-8D63-F61C1E4A27ED}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
